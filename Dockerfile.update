@@ -5,7 +5,7 @@ ENV         TNS_ADMIN         /usr/local/wallet_DB/
 
 USER root
 COPY target/opdemo.war $DOMAIN_HOME/wlsdeploy/applications/
-COPY Wallet_orcl.zip /usr/local/wallet_DB
+COPY Wallet_orcl4py.zip /usr/local/wallet_DB
 
 RUN chown -R oracle:oracle $DOMAIN_HOME/wlsdeploy/applications/ && \
     chmod -R a+xwr $DOMAIN_HOME/wlsdeploy/applications/ && \
