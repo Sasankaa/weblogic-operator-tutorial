@@ -7,7 +7,13 @@ USER root
 
           
 COPY target/opdemo.war $DOMAIN_HOME/wlsdeploy/applications/
-COPY Wallet_orcl4py/ojdbc.properties /usr/local/wallet_DB
+COPY Wallet_orcl4py/ojdbc.properties /home/opc/wallet_DB
+COPY Wallet_orcl4py/cwallet.sso /home/opc/wallet_DB
+COPY Wallet_orcl4py/ewallet.p12 /home/opc/wallet_DB
+COPY Wallet_orcl4py/keystore.jks /home/opc/wallet_DB
+COPY Wallet_orcl4py/sqlnet.ora /home/opc/wallet_DB
+COPY Wallet_orcl4py/tnsnames.ora /home/opc/wallet_DB
+COPY Wallet_orcl4py/truststore.jks /home/opc/wallet_DB
 
 RUN chown -R oracle:oracle $DOMAIN_HOME/wlsdeploy/applications/ && \
     chmod -R a+xwr $DOMAIN_HOME/wlsdeploy/applications/
