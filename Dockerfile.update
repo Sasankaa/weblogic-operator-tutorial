@@ -2,7 +2,12 @@ ARG SOURCEIMAGE
 FROM ${SOURCEIMAGE}
 
 ENV         TNS_ADMIN         /usr/local/wallet_DB/
+#Run a sequence of commands to install needed programs like zip, curl, etc:
 
+RUN         apt-get update && \
+          apt-get install -y curl unzip zip inotify-tools && \
+          rm -rf /var/lib/apt/lists/*
+          
 USER root
 COPY target/opdemo.war $DOMAIN_HOME/wlsdeploy/applications/
 COPY Wallet_orcl4py.zip /usr/local/wallet_DB
