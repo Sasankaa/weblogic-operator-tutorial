@@ -7,7 +7,7 @@ ENV         TNS_ADMIN         /usr/local/wallet_DB/
           
 USER root
 RUN       yum update && \
-          yum install -y curl unzip zip inotify-tools 
+          yum install unzip zip inotify-tools 
           
 COPY target/opdemo.war $DOMAIN_HOME/wlsdeploy/applications/
 COPY Wallet_orcl4py.zip /usr/local/wallet_DB
