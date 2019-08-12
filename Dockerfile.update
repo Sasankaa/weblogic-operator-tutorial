@@ -1,7 +1,7 @@
 ARG SOURCEIMAGE
 FROM ${SOURCEIMAGE}
 
-ENV         TNS_ADMIN         /usr/local/wallet_DB/
+ENV         TNS_ADMIN        /home/opc/wallet_DB
           
 USER root
 
