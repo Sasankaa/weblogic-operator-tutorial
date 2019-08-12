@@ -2,19 +2,14 @@ ARG SOURCEIMAGE
 FROM ${SOURCEIMAGE}
 
 ENV         TNS_ADMIN         /usr/local/wallet_DB/
-#Run a sequence of commands to install needed programs like zip, curl, etc:
-RUN  apt-get update && \
-     apt-get install -y curl unzip zip inotify-tools && \
-     rm -rf /var/lib/apt/lists/*
           
 USER root
 
           
 COPY target/opdemo.war $DOMAIN_HOME/wlsdeploy/applications/
-COPY Wallet_orcl4py.zip /usr/local/wallet_DB
+COPY Wallet_orcl4py/ojdbc.properties /usr/local/wallet_DB
 
 RUN chown -R oracle:oracle $DOMAIN_HOME/wlsdeploy/applications/ && \
-    chmod -R a+xwr $DOMAIN_HOME/wlsdeploy/applications/ && \
-    unzip /usr/local/wallet_DB/Wallet_orcl4py.zip -d /usr/local/wallet_DB/
+    chmod -R a+xwr $DOMAIN_HOME/wlsdeploy/applications/
 
 WORKDIR ${DOMAIN_HOME}
